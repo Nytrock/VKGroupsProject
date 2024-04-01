@@ -1,8 +1,7 @@
 import vk_api
 
-GROUPS_COUNT_IN_SEARCH = 10
 
-
+# Вывод информации о сообществе на основе полученных данных
 def print_group_info(group_info: dict) -> None:
     print("Название сообщества: ", group_info["name"])
     status: str = group_info["status"]
@@ -46,6 +45,7 @@ def print_group_info(group_info: dict) -> None:
         print("Сообщество не подтверждено")
 
 
+# Основная программа для взаимодействия пользователя с api через консоль
 def main():
     print("Приветствую в приложении по получению информации о группе.")
     while True:
@@ -55,13 +55,15 @@ def main():
         choice = int(input())
         if choice == 1:
             name = input("Введите название группы: ")
-            groups = vk_api.get_groups_list(name, GROUPS_COUNT_IN_SEARCH)
+            groups = vk_api.get_groups_list(name)
             if not groups:
                 break
             print("Выберите номер нужной группы. Если нужной группы нет, введите -1 и выйдите из поиска.")
             for group in groups:
                 print(group[0])
             index = int(input())
+            while index >= len(groups) or (index <= 0 and index != 1):
+                print("Такого номера нет. Попробуйте ещё раз или введите -1, чтобы выйти.")
             if index == -1:
                 continue
             else:
