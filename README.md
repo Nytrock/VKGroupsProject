@@ -4,7 +4,7 @@
 # Как начать работать
 - Клонируем репозиторий
 ```
-https://github.com/Nytrock/VKGroupsProject.git
+git clone https://github.com/Nytrock/VKGroupsProject.git
 ```
 
 - Получаем ключ доступа к API. Вводим в браузер ссылку ниже и в получившейся адресной строке копируем аттрибут с названием `access_token`
